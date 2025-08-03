@@ -1,34 +1,38 @@
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { FaQuoteRight, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { FaQuoteRight, FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 const testimonials = [
   {
     id: 1,
-    name: 'Samuel',
-    company: 'Logus',
-    message: 'Aptus customer service is the best we have had. We will keep making our ocean shipping through you.'
+    name: "Samuel",
+    company: "Logus",
+    message:
+      "Aptus customer service is the best we have had. We will keep making our ocean shipping through you.",
   },
   {
     id: 2,
-    name: 'Johnson',
-    company: 'Autova',
-    message: 'Expertly delivered cargo using innovative solutions to fit an ever changing business atmosphere.'
+    name: "Johnson",
+    company: "Autova",
+    message:
+      "Expertly delivered cargo using innovative solutions to fit an ever changing business atmosphere.",
   },
   {
     id: 3,
-    name: 'Handu',
-    company: 'Hotelier',
-    message: 'Aptus customer service is the best we have had. We will keep making our ocean shipping through you.'
+    name: "Handu",
+    company: "Hotelier",
+    message:
+      "Aptus customer service is the best we have had. We will keep making our ocean shipping through you.",
   },
   {
     id: 4,
-    name: 'June K',
-    company: 'Cargof',
-    message: 'Aptus customer service is the best we have had. We will keep making our ocean shipping through you.'
-  }
+    name: "June K",
+    company: "Cargof",
+    message:
+      "Aptus customer service is the best we have had. We will keep making our ocean shipping through you.",
+  },
 ];
 
 export default function Testimonials() {
@@ -43,7 +47,9 @@ export default function Testimonials() {
   }, []);
 
   const goToPrevious = () => {
-    setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+    setCurrentIndex(
+      (prev) => (prev - 1 + testimonials.length) % testimonials.length
+    );
   };
 
   const goToNext = () => {
@@ -93,10 +99,10 @@ export default function Testimonials() {
                 className="bg-white p-8 rounded-lg shadow-lg relative"
               >
                 <FaQuoteRight className="absolute top-4 right-4 text-gray-200 text-4xl" />
-                
+
                 <div className="mb-6">
                   <p className="text-gray-600 text-lg leading-relaxed italic">
-                    "{testimonials[currentIndex].message}"
+                    &ldquo;{testimonials[currentIndex].message}&rdquo;
                   </p>
                 </div>
 
@@ -124,7 +130,7 @@ export default function Testimonials() {
                 key={index}
                 onClick={() => setCurrentIndex(index)}
                 className={`w-3 h-3 rounded-full transition-colors duration-300 ${
-                  index === currentIndex ? 'bg-blue-600' : 'bg-gray-300'
+                  index === currentIndex ? "bg-blue-600" : "bg-gray-300"
                 }`}
               />
             ))}

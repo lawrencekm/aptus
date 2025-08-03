@@ -1,28 +1,28 @@
-'use client';
+"use client";
 
-import { motion } from 'framer-motion';
-import { FaPhone, FaUsers, FaShip, FaStar } from 'react-icons/fa';
-import { useEffect, useState } from 'react';
+import { motion } from "framer-motion";
+import { FaPhone, FaUsers, FaShip, FaStar } from "react-icons/fa";
+import { useEffect, useState } from "react";
 
 const stats = [
   {
     icon: FaUsers,
     number: 200000,
-    label: 'Warehouse m²',
-    color: 'bg-blue-600'
+    label: "Warehouse m²",
+    color: "bg-blue-600",
   },
   {
     icon: FaShip,
     number: 1789,
-    label: 'Complete Shipments',
-    color: 'bg-gray-600'
+    label: "Complete Shipments",
+    color: "bg-gray-600",
   },
   {
     icon: FaStar,
     number: 434,
-    label: 'Trucking Fleet',
-    color: 'bg-green-600'
-  }
+    label: "Trucking Fleet",
+    color: "bg-green-600",
+  },
 ];
 
 function CountUp({ end, duration = 2000 }: { end: number; duration?: number }) {
@@ -35,9 +35,9 @@ function CountUp({ end, duration = 2000 }: { end: number; duration?: number }) {
     const animate = (timestamp: number) => {
       if (!startTime) startTime = timestamp;
       const progress = Math.min((timestamp - startTime) / duration, 1);
-      
+
       setCount(Math.floor(progress * end));
-      
+
       if (progress < 1) {
         animationFrame = requestAnimationFrame(animate);
       }
@@ -71,15 +71,17 @@ export default function Stats() {
             <h6 className="text-blue-600 uppercase text-sm font-semibold tracking-wider">
               Aptus Group
             </h6>
-            
+
             <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 leading-tight">
               #1 Place To Manage All Of Your Cargo Shipment and Logistics
             </h2>
-            
+
             <p className="text-gray-600 text-lg leading-relaxed">
-              Aptus Group leverages Skilled personnel, communications, tracking processing software, 
-              combined with decades of experience! Through an integrated supply chain solutions, 
-              Aptus Group drives sustainable competitive advantages to some of World's largest companies.
+              Aptus Group leverages Skilled personnel, communications, tracking
+              processing software, combined with decades of experience! Through
+              an integrated supply chain solutions, Aptus Group drives
+              sustainable competitive advantages to some of World&apos;s largest
+              companies.
             </p>
 
             {/* Contact Info */}
@@ -94,9 +96,11 @@ export default function Stats() {
                 <FaPhone className="text-white text-xl" />
               </div>
               <div>
-                <h6 className="font-semibold text-gray-900">Call to learn more!</h6>
-                <a 
-                  href="tel:254101631676" 
+                <h6 className="font-semibold text-gray-900">
+                  Call to learn more!
+                </h6>
+                <a
+                  href="tel:254101631676"
                   className="text-blue-600 text-xl font-bold hover:text-blue-700 transition-colors"
                 >
                   +254 101 631 676
