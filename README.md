@@ -1,4 +1,4 @@
-# Aptus Group - Professional Logistics & Safe Depository Services
+# Aptus Group - Professional Logistics & Safe Depository Services.
 
 A modern, responsive website for Aptus Group built with Next.js 15, TypeScript, and Tailwind CSS. This project converts a Laravel Blade template into a professional React-based landing page.
 
