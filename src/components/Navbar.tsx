@@ -1,8 +1,9 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { motion } from 'framer-motion';
-import { FaPhone, FaBars, FaTimes } from 'react-icons/fa';
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { FaPhone, FaBars, FaTimes } from "react-icons/fa";
+import Image from "next/image";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -12,7 +13,7 @@ export default function Navbar() {
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({ behavior: "smooth" });
     }
     setIsOpen(false);
   };
@@ -22,38 +23,43 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <div className="bg-blue-600 text-white px-6 py-3 -my-3">
-            <h2 className="text-xl font-bold">Aptus Group</h2>
+          <div className=" -my-3">
+            <Image
+              src="/images/logo.jpeg"
+              width={150}
+              height={150}
+              alt="Picture of the author"
+            />
           </div>
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-8">
             <button
-              onClick={() => scrollToSection('home')}
+              onClick={() => scrollToSection("home")}
               className="text-gray-700 hover:text-blue-600 transition-colors"
             >
               Home
             </button>
             <button
-              onClick={() => scrollToSection('about')}
+              onClick={() => scrollToSection("about")}
               className="text-gray-700 hover:text-blue-600 transition-colors"
             >
               About
             </button>
             <button
-              onClick={() => scrollToSection('services')}
+              onClick={() => scrollToSection("services")}
               className="text-gray-700 hover:text-blue-600 transition-colors"
             >
               Services
             </button>
             <button
-              onClick={() => scrollToSection('quote')}
+              onClick={() => scrollToSection("quote")}
               className="text-gray-700 hover:text-blue-600 transition-colors"
             >
               Get Free Quote
             </button>
             <button
-              onClick={() => scrollToSection('track')}
+              onClick={() => scrollToSection("track")}
               className="text-gray-700 hover:text-blue-600 transition-colors"
             >
               Track
@@ -63,8 +69,11 @@ export default function Navbar() {
           {/* Phone Number */}
           <div className="hidden lg:flex items-center text-gray-700">
             <FaPhone className="text-blue-600 mr-2" />
-            <a href="tel:254107816884" className="font-semibold hover:text-blue-600 transition-colors">
-              +254 107 816 884
+            <a
+              href="tel:254773946117"
+              className="font-semibold hover:text-blue-600 transition-colors"
+            >
+              +254 773 946 117
             </a>
           </div>
 
@@ -87,39 +96,42 @@ export default function Navbar() {
           >
             <div className="flex flex-col space-y-4">
               <button
-                onClick={() => scrollToSection('home')}
+                onClick={() => scrollToSection("home")}
                 className="text-left text-gray-700 hover:text-blue-600 transition-colors"
               >
                 Home
               </button>
               <button
-                onClick={() => scrollToSection('about')}
+                onClick={() => scrollToSection("about")}
                 className="text-left text-gray-700 hover:text-blue-600 transition-colors"
               >
                 About
               </button>
               <button
-                onClick={() => scrollToSection('services')}
+                onClick={() => scrollToSection("services")}
                 className="text-left text-gray-700 hover:text-blue-600 transition-colors"
               >
                 Services
               </button>
               <button
-                onClick={() => scrollToSection('quote')}
+                onClick={() => scrollToSection("quote")}
                 className="text-left text-gray-700 hover:text-blue-600 transition-colors"
               >
                 Get Free Quote
               </button>
               <button
-                onClick={() => scrollToSection('track')}
+                onClick={() => scrollToSection("track")}
                 className="text-left text-gray-700 hover:text-blue-600 transition-colors"
               >
                 Track
               </button>
               <div className="flex items-center text-gray-700 pt-2">
                 <FaPhone className="text-blue-600 mr-2" />
-                <a href="tel:254107816884" className="font-semibold hover:text-blue-600 transition-colors">
-                  +254 107 816 884
+                <a
+                  href="tel:254773946117"
+                  className="font-semibold hover:text-blue-600 transition-colors"
+                >
+                  +254 773 946 117
                 </a>
               </div>
             </div>
