@@ -1,81 +1,323 @@
-/* Import Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Roboto:wght@500;700&display=swap');
-
 @import "tailwindcss";
 
+/* ============================================================================
+   APTUS GROUP — DESIGN SYSTEM
+   Palette derived from the company logo (public/images/logo.jpeg):
+   metallic gold #E3BA5C on near-black #0B0B0C.
+   Gold is an accent. Charcoal and warm bone carry the interface.
+   ========================================================================== */
+
+@theme {
+  /* ---- Gold (from logo wordmark) ---- */
+  --color-gold-50:  #FBF6EA;
+  --color-gold-100: #F5E9CE;
+  --color-gold-200: #EEDCAB;
+  --color-gold-300: #E7CC85;
+  --color-gold-400: #E3BA5C; /* logo gold */
+  --color-gold-500: #D2A544;
+  --color-gold-600: #B08631;
+  --color-gold-700: #8A6724;
+  --color-gold-800: #63491A;
+  --color-gold-900: #3D2C10;
+
+  /* ---- Ink (warm charcoal, from logo ground) ---- */
+  --color-ink-50:  #F8F6F1;
+  --color-ink-100: #EFEDE7;
+  --color-ink-200: #E0DFDB;
+  --color-ink-300: #C3C3C9;
+  --color-ink-400: #93939C;
+  --color-ink-500: #6B6B74;
+  --color-ink-600: #4A4A52;
+  --color-ink-700: #2B2B30;
+  --color-ink-800: #1D1D20;
+  --color-ink-900: #131315;
+  --color-ink-950: #0B0B0C;
+
+  /* ---- Typography ---- */
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-serif: var(--font-newsreader), ui-serif, Georgia, "Times New Roman", serif;
+
+  /* ---- Section rhythm ---- */
+  --spacing-section: clamp(4.5rem, 9vw, 8.5rem);
+  --spacing-gutter: clamp(1.25rem, 4vw, 2.5rem);
+
+  /* ---- Motion ---- */
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ============================ BASE ======================================== */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  color-scheme: light;
+  --shell: #FFFFFF;
+  --shell-alt: var(--color-ink-50);
+  --hairline: color-mix(in oklab, var(--color-ink-950) 12%, transparent);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: 'Inter', sans-serif;
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  border-color: var(--hairline);
 }
 
 html {
+  -webkit-text-size-adjust: 100%;
   scroll-behavior: smooth;
+  scroll-padding-top: 6rem;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: 'Inter', sans-serif;
-  line-height: 1.6;
+  background: var(--shell);
+  color: var(--color-ink-900);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Roboto', sans-serif;
-  font-weight: 700;
+h1, h2, h3, h4 {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  letter-spacing: -0.015em;
+  line-height: 1.1;
+  text-wrap: balance;
 }
 
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
+p { text-wrap: pretty; }
+
+::selection {
+  background: var(--color-gold-200);
+  color: var(--color-ink-950);
 }
 
-::-webkit-scrollbar-track {
-  background: #f1f1f1;
+/* Visible, high-contrast focus ring everywhere. */
+:focus-visible {
+  outline: 2px solid var(--color-gold-600);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+.on-dark :focus-visible,
+.dark-section :focus-visible {
+  outline-color: var(--color-gold-400);
 }
 
-::-webkit-scrollbar-thumb {
-  background: #2563eb;
-  border-radius: 4px;
-}
+/* ========================= TYPE SCALE ==================================== */
 
-::-webkit-scrollbar-thumb:hover {
-  background: #1d4ed8;
-}
+.display-1 { font-size: clamp(2.6rem, 6.4vw, 5rem); line-height: 1.03; letter-spacing: -0.025em; }
+.display-2 { font-size: clamp(2.1rem, 4.4vw, 3.5rem); line-height: 1.08; letter-spacing: -0.02em; }
+.display-3 { font-size: clamp(1.6rem, 2.8vw, 2.25rem); line-height: 1.15; }
+.lede      { font-size: clamp(1.075rem, 1.5vw, 1.3rem); line-height: 1.62; }
 
-/* Utility classes */
-.btn-slide {
-  display: inline-flex;
-  align-items: center;
-  color: #2563eb;
+.eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
   font-weight: 600;
-  transition: color 0.3s ease;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
 }
 
-.btn-slide:hover {
-  color: #1d4ed8;
+/* ========================== SURFACES ===================================== */
+
+.rule-gold {
+  width: 3rem;
+  height: 1px;
+  background: linear-gradient(90deg, var(--color-gold-500), transparent);
 }
 
-.btn-slide:hover .fa-arrow-right {
-  transform: translateX(4px);
+/* Engraved guilloché-style motif used behind dark sections. Pure CSS, no image. */
+.engraved {
+  position: relative;
+  isolation: isolate;
+}
+.engraved::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: 0.5;
+  background:
+    repeating-linear-gradient(115deg,
+      color-mix(in oklab, var(--color-gold-400) 7%, transparent) 0 1px,
+      transparent 1px 9px),
+    radial-gradient(90rem 40rem at 78% -10%,
+      color-mix(in oklab, var(--color-gold-500) 16%, transparent), transparent 62%);
+  mask-image: linear-gradient(to bottom, black, transparent 78%);
 }
 
-.text-gradient {
-  background: linear-gradient(to right, #2563eb, #1e40af);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+/* ========================== COMPONENTS =================================== */
+
+@layer components {
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    padding: 0.85rem 1.5rem;
+    font-family: var(--font-sans);
+    font-size: 0.925rem;
+    font-weight: 600;
+    letter-spacing: 0.005em;
+    line-height: 1.2;
+    border: 1px solid transparent;
+    border-radius: 2px;
+    text-align: center;
+    transition: background-color .2s var(--ease-out-soft),
+                border-color .2s var(--ease-out-soft),
+                color .2s var(--ease-out-soft),
+                transform .2s var(--ease-out-soft);
+  }
+  .btn:active { transform: translateY(1px); }
+
+  .btn-primary {
+    background: var(--color-gold-500);
+    color: var(--color-ink-950);
+    border-color: var(--color-gold-500);
+  }
+  .btn-primary:hover { background: var(--color-gold-400); border-color: var(--color-gold-400); }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--color-ink-900);
+    border-color: color-mix(in oklab, var(--color-ink-950) 28%, transparent);
+  }
+  .btn-secondary:hover {
+    border-color: var(--color-ink-950);
+    background: var(--color-ink-50);
+  }
+
+  .btn-on-dark {
+    background: color-mix(in oklab, var(--color-ink-50) 7%, transparent);
+    color: var(--color-ink-50);
+    border-color: color-mix(in oklab, var(--color-gold-300) 60%, transparent);
+  }
+  .btn-on-dark:hover {
+    background: color-mix(in oklab, var(--color-ink-50) 12%, transparent);
+    border-color: var(--color-gold-400);
+    color: var(--color-gold-200);
+  }
+
+  .btn-ghost {
+    padding-inline: 0;
+    color: var(--color-gold-800);
+    background: none;
+    border: none;
+    border-bottom: 1px solid color-mix(in oklab, var(--color-gold-600) 40%, transparent);
+    border-radius: 0;
+    padding-bottom: 0.2rem;
+  }
+  .btn-ghost:hover { border-bottom-color: var(--color-gold-600); color: var(--color-gold-900); }
+
+  /* Cards — minimal, hairline, no heavy shadow. */
+  .card {
+    background: #fff;
+    border: 1px solid var(--hairline);
+    border-radius: 2px;
+    transition: border-color .25s var(--ease-out-soft), background-color .25s var(--ease-out-soft);
+  }
+  .card:hover { border-color: color-mix(in oklab, var(--color-gold-600) 50%, transparent); }
+
+  .card-dark {
+    background: color-mix(in oklab, var(--color-ink-50) 5%, transparent);
+    border: 1px solid color-mix(in oklab, var(--color-ink-50) 14%, transparent);
+    border-radius: 2px;
+  }
+
+  /* Form controls */
+  .field {
+    display: block;
+    width: 100%;
+    padding: 0.8rem 0.9rem;
+    font-size: 0.95rem;
+    font-family: var(--font-sans);
+    color: var(--color-ink-900);
+    background: #fff;
+    border: 1px solid color-mix(in oklab, var(--color-ink-950) 20%, transparent);
+    border-radius: 2px;
+    transition: border-color .18s var(--ease-out-soft), box-shadow .18s var(--ease-out-soft);
+  }
+  .field::placeholder { color: var(--color-ink-400); }
+  .field:hover { border-color: color-mix(in oklab, var(--color-ink-950) 34%, transparent); }
+  .field:focus {
+    border-color: var(--color-gold-600);
+    box-shadow: 0 0 0 3px color-mix(in oklab, var(--color-gold-400) 30%, transparent);
+    outline: none;
+  }
+  .field[aria-invalid="true"] {
+    border-color: #B3261E;
+    box-shadow: 0 0 0 3px color-mix(in oklab, #B3261E 18%, transparent);
+  }
+  .label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--color-ink-600);
+    margin-bottom: 0.4rem;
+  }
+
+  /* Long-form editorial content */
+  .prose-aptus { max-width: 68ch; }
+  .prose-aptus > * + * { margin-top: 1.15em; }
+  .prose-aptus h2 {
+    font-size: clamp(1.45rem, 2.4vw, 1.95rem);
+    margin-top: 2.4em;
+    padding-top: 1.6rem;
+    border-top: 1px solid var(--hairline);
+  }
+  .prose-aptus h3 { font-size: clamp(1.15rem, 1.7vw, 1.35rem); margin-top: 1.9em; }
+  .prose-aptus p, .prose-aptus li { color: var(--color-ink-700); }
+  .prose-aptus ul, .prose-aptus ol { padding-left: 1.15rem; }
+  .prose-aptus li + li { margin-top: 0.5em; }
+  .prose-aptus ul { list-style: none; padding-left: 0; }
+  .prose-aptus ul > li { position: relative; padding-left: 1.5rem; }
+  .prose-aptus ul > li::before {
+    content: "";
+    position: absolute;
+    left: 0.1rem;
+    top: 0.72em;
+    width: 0.45rem;
+    height: 1px;
+    background: var(--color-gold-600);
+  }
+  .prose-aptus ol { list-style: decimal; }
+  .prose-aptus a {
+    color: var(--color-gold-800);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-color: color-mix(in oklab, var(--color-gold-600) 45%, transparent);
+  }
+  .prose-aptus a:hover { text-decoration-color: var(--color-gold-700); }
+  .prose-aptus strong { color: var(--color-ink-900); font-weight: 600; }
+}
+
+/* ========================== MOTION ======================================= */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+}
+.reveal[data-shown="true"] {
+  opacity: 1;
+  transform: none;
+  transition: opacity .7s var(--ease-out-soft), transform .7s var(--ease-out-soft);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal, .reveal[data-shown="true"] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  *, *::before, *::after {
+    animation-duration: .001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .001ms !important;
+  }
+}
+
+/* Print: readable, no dark floods */
+@media print {
+  .no-print { display: none !important; }
+  body { background: #fff; color: #000; }
 }
