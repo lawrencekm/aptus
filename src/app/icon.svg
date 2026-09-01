@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Aptus Group">
+  <rect width="32" height="32" rx="6.5" fill="#0B0B0C"/>
+  <g fill="#E3BA5C">
+    <path d="M16 5.2 5 14.6v4L16 9.2z"/>
+    <path d="M16 5.2 27 14.6v4L16 9.2z"/>
+    <rect x="5" y="14.6" width="3.4" height="12.2"/>
+    <rect x="23.6" y="14.6" width="3.4" height="12.2"/>
+    <rect x="14.3" y="9.2" width="3.4" height="17.6"/>
+  </g>
+</svg>

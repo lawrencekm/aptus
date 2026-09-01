@@ -35,7 +35,6 @@ export const metadata: Metadata = {
   creator: company.legalName,
   publisher: company.legalName,
   formatDetection: { telephone: true, email: true, address: false },
-  icons: { icon: "/favicon.ico" },
   alternates: { canonical: SITE_URL },
   robots: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 },
 };
